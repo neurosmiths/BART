@@ -442,9 +442,6 @@ if plotFlag
     end
     text(0,maxLim-12,sprintf('Total accuracy: %.1f percent.',(sum(banked)./nTrials)*100));
     text(0,maxLim-14,sprintf('KLD-derived impulsivity = %.2f ',d));
-    text(0,maxLim-16,sprintf('KLD-derived impulsivity (reds only) = %.2f ',dRED));
-    text(0,maxLim-18,sprintf('KLD-derived impulsivity (oranges only) = %.2f ',dORANGE));
-    text(0,maxLim-20,sprintf('KLD-derived impulsivity (yellows only) = %.2f ',dYELLOW));
 
     hold off;
     % deets
