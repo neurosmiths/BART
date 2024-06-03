@@ -368,12 +368,12 @@ nBns = 10;
 %edgesColor = 1:0.5:10;
 
 % color histograms
-[ctrlHistRED,edges] = histcounts(allITs(trialTypeWithCtrls==3 & isCtrl),0:maxIT./nBns:maxIT);
-[freeHistRED,edges] = histcounts(allITs(trialTypeWithCtrls==3 & ~isCtrl),0:maxIT./nBns:maxIT);
-[ctrlHistORA,edges] = histcounts(allITs(trialTypeWithCtrls==2 & isCtrl),0:maxIT./nBns:maxIT);
-[freeHistORA,edges] = histcounts(allITs(trialTypeWithCtrls==2 & ~isCtrl),0:maxIT./nBns:maxIT);
-[ctrlHistYEL,edges] = histcounts(allITs(trialTypeWithCtrls==1 & isCtrl),0:maxIT./nBns:maxIT);
-[freeHistYEL,edges] = histcounts(allITs(trialTypeWithCtrls==1 & ~isCtrl),0:maxIT./nBns:maxIT);
+[ctrlHistRED,edges] = histcounts(allITs(trialTypeWithCtrls==3 & isCtrl),nBns:maxIT);
+[freeHistRED,edges] = histcounts(allITs(trialTypeWithCtrls==3 & ~isCtrl),nBns:maxIT);
+[ctrlHistORA,edges] = histcounts(allITs(trialTypeWithCtrls==2 & isCtrl),nBns:maxIT);
+[freeHistORA,edges] = histcounts(allITs(trialTypeWithCtrls==2 & ~isCtrl),nBns:maxIT);
+[ctrlHistYEL,edges] = histcounts(allITs(trialTypeWithCtrls==1 & isCtrl),nBns:maxIT);
+[freeHistYEL,edges] = histcounts(allITs(trialTypeWithCtrls==1 & ~isCtrl),nBns:maxIT);
 
 c = midpoint(edges);
 centers = edges(1:end-1)+c(1);
