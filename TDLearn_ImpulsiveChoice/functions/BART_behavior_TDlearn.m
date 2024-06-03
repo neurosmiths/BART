@@ -22,21 +22,40 @@ function [TDdata,bestAlpha,bestAlphaRisk] = BART_behavior_TDlearn(ptID,whichTD)
 %7: max rt exceeded  :: [127]
 %8: trial over ::		[120]
 
-% author: EHS20181005
-% 
-% % patient details.
- ptID = '202407';
- whichTD = ['vanilla']; % type in vanilla for simple TD learning model
+% author: EHS
+% edited: RC
+
+Demo2 = true; % If you want to run the first Demo Dataset, Demo2 = FALSE. If you want to run the second Demo Dataset, Demo2 = TRUE.
+if ~Demo2
+
+ptID = ['202407']; % demo data from one participant
+whichTD = ['vanilla']; % type in vanilla for simple TD learning model
 
 % loading behavioral data mat file
 [BehaviorFile, BehaviorLocation] = uigetfile('.mat', "BehaviorDemoData.mat") % Select Behavior file from repository
 matFile =  fullfile(BehaviorLocation,BehaviorFile) % This will allow you to get the "BehaviorDemoData.mat" and save it as matFile.
-
 load(matFile)
 
 % finding nev data to get behavioral markers from neural event file.
 [NeuralFile, NeuralLocation] = uigetfile('.nev', "NeuralEventDemoData.mat") % Select Neural file from repository
 nevFile =  fullfile(NeuralLocation,NeuralFile) % This will allow you to get the "NeuralEventDemoData.mat" and save it as nevFile.
+
+elseif Demo2
+
+ptID = ['202107']; % demo data from one participant
+whichTD = ['vanilla']; % type in vanilla for simple TD learning model
+
+% loading behavioral data mat file
+[BehaviorFile2, BehaviorLocation2] = uigetfile('.mat', "BehaviorDemoData2.mat") % Select Behavior file from repository
+matFile =  fullfile(BehaviorLocation2,BehaviorFile2) % This will allow you to get the "BehaviorDemoData2.mat" and save it as matFile.
+load(matFile)
+
+% finding nev data to get behavioral markers from neural event file.
+[NeuralFile2, NeuralLocation2] = uigetfile('.nev', "NeuralEventDemoData2.mat") % Select Neural file from repository
+nevFile =  fullfile(NeuralLocation2,NeuralFile2) % This will allow you to get the "NeuralEventDemoData2.mat" and save it as nevFile.
+
+end
+
 % trodeLabels = ptTrodesBART(ptID);
 
 % initializing bhv output
