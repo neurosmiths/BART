@@ -16,6 +16,7 @@ function [TDdata] = TDlearn(ptID,whichTD,rewardData,riskData,startTrial,LMtrials
 %   difference learning model fit structures.
 
 % author: EHS20201102
+% edited: RC
 
 if nargin<3
     error('function requires data')
