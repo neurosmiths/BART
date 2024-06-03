@@ -28,17 +28,19 @@ function [TDdata,bestAlpha,bestAlphaRisk] = BART_behavior_TDlearn(ptID,whichTD)
 % ptID = '202407';
 % whichTD = ['vanilla'];
 
-parentDir = ['D:\Data\preProcessed\BART_preprocessed\' ptID '\Data\*.nev'];
-nevList = dir(parentDir);
-nevFile = fullfile(nevList.folder,nevList.name);
+% finding nev data to get behavioral markers from neural event file.
+[NeuralFile, NeuralLocation] = uigetfile('.nev', "NeuralEventDemoData.mat") % Select Neural file from repository
+nevFile =  fullfile(NeuralLocation,NeuralFile) % This will allow you to get the "NeuralEventDemoData.mat" and save it as nevFile.
 % trodeLabels = ptTrodesBART(ptID);
 
 % initializing bhv output
 TDdata.patientID = ptID;
 TDdata.type = whichTD;
 
-% loading matFile
-matFile = ['D:\Data\preProcessed\BART_preprocessed\' ptID '\Data\' ptID '.bartBHV.mat'];
+% loading behavioral data mat file
+[BehaviorFile, BehaviorLocation] = uigetfile('.mat', "BehaviorDemoData.mat") % Select Behavior file from repository
+matFile =  fullfile(BehaviorLocation,BehaviorFile) % This will allow you to get the "BehaviorDemoData.mat" and save it as matFile.
+
 load(matFile)
 
 % load and define triggers from nevFle
