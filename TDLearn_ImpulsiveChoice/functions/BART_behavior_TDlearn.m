@@ -493,9 +493,6 @@ elseif strcmp(whichTD,'distributional')
             %title(sprintf('t(%d) = %.2f, p = %.2f, R^2 = %.2f',PElm.DFE,PElm.Coefficients{2,3},PElm.Coefficients{2,4},PElm.Rsquared.Ordinary))
             axis square tight
 
-            % saving figures
-            halfMaximize(gcf,'left')
-            saveas(gcf,['D:\Data\Rhiannon\BART_RLDM_outputs\' ptID '_' whichDistRL '_distributionalTDlearning.pdf'])
         end
     end
 end
