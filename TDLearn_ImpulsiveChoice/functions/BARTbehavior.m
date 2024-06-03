@@ -467,52 +467,52 @@ if plotFlag
     plotmultipleaxes(2,2,3,0.05,figID);
     % stats
     title(sprintf('ranksum test, U=%d, p=%.2d.',ITstats.ranksum,ITp));
-    % plots
-    hold on
-    cith = histogram(ctrlITs,nBins, BinWidth=1);
-    fith = histogram(freeITs,nBins, BinWidth=1);
+% plots
+hold on
+cith = histfit(ctrlITs,nBins);
+fith = histfit(freeITs,nBins);
 
-    hold off
-    % deets
-    cith.FaceColor = rgb('forestgreen');
-    cith.FaceAlpha = histoAlpha;
-    %edges_ctrl.Color = rgb('forestgreen');
-    cith.LineWidth = 1;
-    fith.FaceColor = rgb('navy');
-    fith.FaceAlpha = histoAlpha;
-   %edges_free.Color = rgb('navy');
-    fith.LineWidth = 1;
-    axis square
-    ylabel('IT count')
-    xlabel('time (s)')
-    xlim([0 max(allITs)])
+hold off
+% deets
+cith(1).FaceColor = rgb('forestgreen');
+cith(1).FaceAlpha = histoAlpha;
+cith(2).Color = rgb('forestgreen');
+cith(2).LineWidth = 1;
+fith(1).FaceColor = rgb('navy');
+fith(1).FaceAlpha = histoAlpha;
+fith(2).Color = rgb('navy');
+fith(2).LineWidth = 1;
+axis square
+ylabel('IT count')
+xlabel('time (s)')
+xlim([0 max(allITs)])
 
     %% inflate time histograms for balloon types
     plotmultipleaxes(5,2,3,0.05,figID);
     title(sprintf('excluding passive, kruskal-wallis, X^2=%.2f, p=%.2d.',tblColIT{2,5},tblColIT{2,6}));
-    % plots
-    hold on
-    yith = histfit(yellowITs,ceil(range(yellowITs)/15),'gamma');
-    oith = histfit(orangeITs,ceil(range(orangeITs)/15), 'gamma');
-    rith = histfit(redITs,ceil(range(redITs)/15), 'gamma');
-    hold off
-    % deets
-    rith(1).FaceColor = rgb('red');
-    rith(1).FaceAlpha = histoAlpha;
-    oith(1).FaceColor = rgb('darkorange');
-    oith(1).FaceAlpha = histoAlpha;
-    yith(1).FaceColor = rgb('gold');
-    yith(1).FaceAlpha = histoAlpha;
-    rith(2).Color = rgb('red');
-    rith(2).LineWidth = 1;
-    oith(2).Color = rgb('darkorange');
-    oith(2).LineWidth = 1;
-    yith(2).Color = rgb('gold');
-    yith(2).LineWidth = 1;
-    axis square
-    ylabel('IT count')
-    xlabel('time (s)')
-    xlim([0 max(allITs)])
+   % plots
+hold on
+yith = histfit(yellowITs,nBins);
+oith = histfit(orangeITs,nBins);
+rith = histfit(redITs,nBins);
+hold off
+% deets
+rith(1).FaceColor = rgb('red');
+rith(1).FaceAlpha = histoAlpha;
+oith(1).FaceColor = rgb('orangered');
+oith(1).FaceAlpha = histoAlpha;
+yith(1).FaceColor = rgb('gold');
+yith(1).FaceAlpha = histoAlpha;
+rith(2).Color = rgb('red');
+rith(2).LineWidth = 1;
+oith(2).Color = rgb('orangered');
+oith(2).LineWidth = 1;
+yith(2).Color = rgb('gold');
+yith(2).LineWidth = 1;
+axis square
+ylabel('IT count')
+xlabel('time (s)')
+xlim([0 max(allITs)])
 end
 
 %% more stats
@@ -568,7 +568,6 @@ if plotFlag
     end
 end
 
-
 %% more stats
 bhvStruct.balloonColorRTStats.pVal = pColRT;
 bhvStruct.balloonColorRTStats.statStruct = statsColRT;
@@ -594,15 +593,13 @@ if plotFlag
     end
 end
 
-
 %% more stats
 bhvStruct.postBankPopRTStats.pVal = RTp;
 bhvStruct.postBankPopRTStats.zVal = RTstats.zval;
 bhvStruct.postBankPopRTStats.bankPopMeans = [mean(postBankRTs) mean(postPopRTs)];
 bhvStruct.postBankPopRTStats.bankPopSTDs = [std(postBankRTs) std(postPopRTs)];
 
-
-% plotting points histograms for baloon types
+% plotting points histograms for balloon types
 % stats
 [pColPts,tblColPts,statsColPTs] = kruskalwallis(allPoints(trialTypeWithCtrls<4),trialTypeWithCtrls(trialTypeWithCtrls<4),'off');
 
@@ -634,11 +631,6 @@ if plotFlag
     xlabel('points')
     xlim([0 max(allPoints)])
 
-    %% saving figures
-    halfMaximize(figID,'right');
-    saveDir = ['D:\Code\Rhiannon\BART\figs\BARTBehavior_Individual'];
-    fName = sprintf('%s_BARTbehavior',ptID);
-    print(fullfile(saveDir,fName),'-dpdf','-fillpage')
 end
 
 %% More behavioral modeling for each patient.
@@ -706,8 +698,3 @@ pointsTable = pointsTable_wCTRL(~isCtrl,:);
 %bhvStruct.DOB = SexAge.DOB(SexAgeIdx);
 %bhvStruct.Age = SexAge.Age(SexAgeIdx);
 %end
-
-%% saving stats
-save(['D:\Data\Rhiannon\BART_RLDM_outputs\bhvStruct\' ptID '.bhvStruct.mat'],'bhvStruct')
-
-
