@@ -25,7 +25,7 @@ function [TDdata,bestAlpha,bestAlphaRisk] = BART_behavior_TDlearn(ptID,whichTD)
 % author: EHS20181005
 % 
 % % patient details.
-% ptID = '202001';
+% ptID = '202407';
 % whichTD = ['vanilla'];
 
 parentDir = ['D:\Data\preProcessed\BART_preprocessed\' ptID '\Data\*.nev'];
