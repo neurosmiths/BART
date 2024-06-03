@@ -34,8 +34,8 @@ nevFile =  fullfile(NeuralLocation,NeuralFile) % This will allow you to get the 
 % trodeLabels = ptTrodesBART(ptID);
 
 % initializing bhv output
-TDdata.patientID = ptID;
-TDdata.type = whichTD;
+%TDdata.patientID = ptID; % we used these originally to generate a TDdata structure but we do not need them now.
+%TDdata.type = whichTD;
 
 % loading behavioral data mat file
 [BehaviorFile, BehaviorLocation] = uigetfile('.mat', "BehaviorDemoData.mat") % Select Behavior file from repository
