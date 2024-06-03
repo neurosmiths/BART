@@ -9,7 +9,8 @@ Instructions:
 
 A. Navigate to DemoData.
    1. Here you can open the .ns2 file from a public access boxfolder. This could not be uploaded to github, due to the file size. Please download this file to run TDlearn files.
-   2. You can also find the behavioral and .nev data files needed here to run the folliwng scripts.
+   2. You can also find the behavioral and .nev data files needed here to run the following scripts.
+   3. 3. You will need the npmk package to run the .NEV data which can be found here: (https://github.com/BlackrockNeurotech/NPMK)
 
 B. Behavioral Data Example:
   1. Navigate to functions.
