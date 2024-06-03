@@ -28,6 +28,12 @@ function [TDdata,bestAlpha,bestAlphaRisk] = BART_behavior_TDlearn(ptID,whichTD)
  ptID = '202407';
  whichTD = ['vanilla']; % type in vanilla for simple TD learning model
 
+% loading behavioral data mat file
+[BehaviorFile, BehaviorLocation] = uigetfile('.mat', "BehaviorDemoData.mat") % Select Behavior file from repository
+matFile =  fullfile(BehaviorLocation,BehaviorFile) % This will allow you to get the "BehaviorDemoData.mat" and save it as matFile.
+
+load(matFile)
+
 % finding nev data to get behavioral markers from neural event file.
 [NeuralFile, NeuralLocation] = uigetfile('.nev', "NeuralEventDemoData.mat") % Select Neural file from repository
 nevFile =  fullfile(NeuralLocation,NeuralFile) % This will allow you to get the "NeuralEventDemoData.mat" and save it as nevFile.
@@ -36,12 +42,6 @@ nevFile =  fullfile(NeuralLocation,NeuralFile) % This will allow you to get the 
 % initializing bhv output
 TDdata.patientID = ptID; 
 TDdata.type = whichTD;
-
-% loading behavioral data mat file
-[BehaviorFile, BehaviorLocation] = uigetfile('.mat', "BehaviorDemoData.mat") % Select Behavior file from repository
-matFile =  fullfile(BehaviorLocation,BehaviorFile) % This will allow you to get the "BehaviorDemoData.mat" and save it as matFile.
-
-load(matFile)
 
 % load and define triggers from nevFle
 NEV = openNEV(nevFile,'overwrite');
@@ -200,7 +200,7 @@ if strcmp(whichTD,'vanilla')
     riskVEfit = fit([1:nTrials]',TDdata.Vrisk(maxBidx,:)',ft);
 
     % plotting for best alpha
-    plt = false;
+    plt = true;
     if plt
         figure
         subplot(3,8,[1 2])
