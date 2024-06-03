@@ -25,8 +25,8 @@ function [TDdata,bestAlpha,bestAlphaRisk] = BART_behavior_TDlearn(ptID,whichTD)
 % author: EHS20181005
 % 
 % % patient details.
-% ptID = '202407';
-% whichTD = ['vanilla']; % type in vanilla for simple TD learning model
+ ptID = '202407';
+ whichTD = ['vanilla']; % type in vanilla for simple TD learning model
 
 % finding nev data to get behavioral markers from neural event file.
 [NeuralFile, NeuralLocation] = uigetfile('.nev', "NeuralEventDemoData.mat") % Select Neural file from repository
@@ -34,8 +34,8 @@ nevFile =  fullfile(NeuralLocation,NeuralFile) % This will allow you to get the 
 % trodeLabels = ptTrodesBART(ptID);
 
 % initializing bhv output
-%TDdata.patientID = ptID; % we used these originally to generate a TDdata structure but we do not need them now.
-%TDdata.type = whichTD;
+TDdata.patientID = ptID; 
+TDdata.type = whichTD;
 
 % loading behavioral data mat file
 [BehaviorFile, BehaviorLocation] = uigetfile('.mat', "BehaviorDemoData.mat") % Select Behavior file from repository
