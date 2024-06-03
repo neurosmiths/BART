@@ -18,23 +18,21 @@ function [bhvStruct] = BARTbehavior(ptID,plotFlag)
 %Edited: RC20220215
 
 % patient details.
-%ptID = ['202401'];
-plotFlag = false;
+ptID = ['202407']; % demo data from one participant
+plotFlag = true; % create figures
 
 % loading behavioral data mat file
-%matFile = ['\\Rolstonserver\d\D:\Data\preProcessed\BART_preprocessed\' ptID '\Data\' ptID '.bartBHV.mat']; % if working on workstation
-matFile = ['D:\Data\preProcessed\BART_preprocessed\' ptID '\Data\' ptID '.bartBHV.mat']; % if working on server
+[BehaviorFile, BehaviorLocation] = uigetfile('.mat', "BehaviorDemoData.mat") % Select Behavior file from repository
+matFile =  fullfile(BehaviorLocation,BehaviorFile) % This will allow you to get the "BehaviorDemoData.mat" and save it as matFile.
 
 load(matFile)
 
 % finding nev data to get behavioral markers from neural event file.
-%parentDir = ['\\rolstonserver\d\Data\preProcessed\BART_preprocessed\' ptID '\Data\*.nev']; % if working on workstation
-parentDir = ['D:\Data\preProcessed\BART_preprocessed\' ptID '\Data\*.nev']; % if working on server
-nevList = dir(parentDir);
-nevFile = fullfile(nevList.folder,nevList.name);
+[NeuralFile, NeuralLocation] = uigetfile('.nev', "NeuralEventDemoData.mat") % Select Neural file from repository
+nevFile =  fullfile(NeuralLocation,NeuralFile) % This will allow you to get the "NeuralEventDemoData.mat" and save it as nevFile.
 % trodeLabels = ptTrodesBART(ptID);
 
-% load and define triggers from nevFle
+% load and define triggers from nevFile
 NEV = openNEV(nevFile,'overwrite');
 trigs = NEV.Data.SerialDigitalIO.UnparsedData;
 trigTimes = NEV.Data.SerialDigitalIO.TimeStampSec;
