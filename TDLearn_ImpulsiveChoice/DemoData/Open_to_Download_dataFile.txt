@@ -1,3 +1,5 @@
 Link to open and download data file:
 
+This is a large neural event datafile. You will need to download this and "load" into matlab to run for TDlearn code. 
+
 https://uofu.box.com/s/zirspzt4f29c2aotyvygyj84tk3sey8c
