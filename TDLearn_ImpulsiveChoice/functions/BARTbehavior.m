@@ -32,7 +32,7 @@ matFile =  fullfile(BehaviorLocation,BehaviorFile) % This will allow you to get 
 load(matFile)
 
 % finding nev data to get behavioral markers from neural event file.
-[NeuralFile, NeuralLocation] = uigetfile('.nev', "NeuralEventDemoData.mat") % Select Neural file from repository
+[NeuralFile, NeuralLocation] = uigetfile('.mat', "NeuralEventDemoData.mat") % Select Neural file from repository
 nevFile =  fullfile(NeuralLocation,NeuralFile) % This will allow you to get the "NeuralEventDemoData.mat" and save it as nevFile.
 
 elseif Demo2
@@ -46,7 +46,7 @@ matFile =  fullfile(BehaviorLocation2,BehaviorFile2) % This will allow you to ge
 load(matFile)
 
 % finding nev data to get behavioral markers from neural event file.
-[NeuralFile2, NeuralLocation2] = uigetfile('.nev', "NeuralEventDemoData2.mat") % Select Neural file from repository
+[NeuralFile2, NeuralLocation2] = uigetfile('.mat', "NeuralEventDemoData2.mat") % Select Neural file from repository
 nevFile =  fullfile(NeuralLocation2,NeuralFile2) % This will allow you to get the "NeuralEventDemoData2.mat" and save it as nevFile.
 
 end
